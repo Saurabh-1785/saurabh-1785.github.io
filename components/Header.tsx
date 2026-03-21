@@ -52,12 +52,13 @@ export default function Header() {
 
   return (
     <header className="bg-page py-4 fixed top-0 w-full z-[1000] transition-colors duration-300">
-      <nav className="max-w-[1280px] mx-auto flex justify-between items-center px-6">
+      <nav className="max-w-[1280px] mx-auto flex justify-between items-center px-4 md:px-6 gap-2 overflow-hidden">
         <Link
           href="/"
-          className="text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-foreground rounded-3xl px-5 py-2 transition-all duration-200 hover:bg-foreground hover:text-page"
+          className="text-xs md:text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-foreground rounded-3xl px-3 md:px-5 py-2 transition-all duration-200 delay-75 hover:bg-foreground hover:text-page shrink-0 truncate max-w-[55%] md:max-w-none"
         >
-          SAURABH CHAUHAN | FULL-STACK DEVELOPER
+          <span className="hidden md:inline">SAURABH CHAUHAN | FULL-STACK DEVELOPER</span>
+          <span className="md:hidden">SC | DEVELOPER</span>
         </Link>
         <div className="flex items-center gap-3">
           <button
@@ -81,7 +82,7 @@ export default function Header() {
               <li key={link.href} className="w-4/5 md:w-auto">
                 <Link
                   href={link.href}
-                  className={`block text-center py-3.5 text-sm md:py-2 md:text-[13px] px-5 cursor-pointer rounded-3xl transition-all duration-200 border-[1.5px] border-foreground no-underline tracking-wide font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 ${
+                  className={`block text-center py-3.5 text-sm md:py-2 md:text-[13px] px-5 cursor-pointer rounded-3xl transition-all duration-200 delay-75 border-[1.5px] border-foreground no-underline tracking-wide font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 ${
                     pathname === link.href
                       ? "bg-foreground text-page"
                       : "text-foreground hover:bg-foreground hover:text-page"
@@ -93,7 +94,7 @@ export default function Header() {
             ))}
           </ul>
           <button
-            className="w-10 h-10 rounded-full border-[1.5px] border-foreground bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 shrink-0 hover:bg-foreground hover:text-page focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+            className="w-10 h-10 rounded-full border-[1.5px] border-foreground bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 delay-75 shrink-0 hover:bg-foreground hover:text-page focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
             onClick={toggleTheme}
             aria-label="Toggle dark mode"
           >
