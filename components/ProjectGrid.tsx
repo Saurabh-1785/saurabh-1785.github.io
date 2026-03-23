@@ -23,24 +23,24 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
             className="bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden relative"
           >
             <div className="h-[120px] md:h-[140px] bg-white dark:bg-black" />
-            <div className="px-5 md:px-6 pt-4 md:pt-5 pb-5 md:pb-6">
-              <h4 className="text-base font-bold mb-2.5">
+            <div className="px-5 md:px-6 pt-4 md:pt-5 pb-5 md:pb-6 bg-edge/10 dark:bg-edge/20 relative">
+              <h4 className="text-lg font-bold mb-3">
                 {project.title}
               </h4>
-              <div className="flex gap-3 items-center">
+              <div className="flex gap-4 items-center">
                 {/* Info Button */}
                 <button
                   onClick={() => onOpenInfo(project.title)}
-                  className="text-foreground transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15] bg-transparent border-none cursor-pointer p-0"
+                  className="text-secondary transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15] bg-transparent border-none cursor-pointer p-0"
                   aria-label={`Info about ${project.title}`}
                 >
                   <svg
-                    width="22"
-                    height="22"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
@@ -56,11 +56,11 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${project.title} GitHub`}
-                    className="text-foreground transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15]"
+                    className="text-secondary transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15]"
                   >
                     <svg
-                      width="22"
-                      height="22"
+                      width="24"
+                      height="24"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
@@ -74,15 +74,15 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${project.title} Live Demo`}
-                    className="text-foreground transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15]"
+                    className="text-secondary transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15]"
                   >
                     <svg
-                      width="22"
-                      height="22"
+                      width="24"
+                      height="24"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="2"
+                      strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
@@ -94,7 +94,7 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
                 )}
               </div>
               <span
-                className={`absolute bottom-5 right-5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border-[1.5px] border-edge bg-card-alt text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover`}
+                className={`absolute bottom-5 right-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border-[1.5px] border-edge bg-card-alt text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover hover:border-edge-hover`}
               >
                 {project.status}
               </span>
@@ -104,7 +104,7 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
       </div>
       <Link
         href="/projects"
-        className="flex items-center justify-between py-3.5 px-5 bg-btn text-btn-text no-underline rounded-xl text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover border-[1.5px] border-edge focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        className="flex items-center justify-between py-3.5 px-5 bg-btn text-btn-text no-underline rounded-xl text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover hover:text-foreground border-[1.5px] border-edge focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
         View All Projects
         <span className="text-lg">↗</span>

@@ -7,15 +7,12 @@ export default function AboutCard() {
       <h3 className="text-sm font-semibold text-label uppercase tracking-wide">
         About
       </h3>
-      <p className="text-[15px] text-secondary leading-[1.7] flex-1">
-        Hello, my name is Saurabh Chauhan, and I&apos;m a software development enthusiast with a keen interest
-        in creating efficient, effective, and robust digital solutions. My area of expertise includes backend
-        development and algorithms. My area of interest involves creating high-performance solutions,
-        solving complex computational problems, and creating solutions with strong engineering principles and real-world applicability.
+      <p className="text-[15px] text-secondary leading-[1.7] flex-1 text-justify">
+        Computer Science student and full-stack developer focused on building clean, practical, and user-friendly applications. Skilled in modern web technologies like React and Node.js, with a strong interest in solving real-world problems through efficient and scalable solutions. Emphasis on performance, usability, and thoughtful design, along with active involvement in tech communities to strengthen communication and leadership skills.
       </p>
       <Link
         href="/projects"
-        className="flex items-center justify-between py-3.5 px-5 bg-btn text-btn-text no-underline rounded-xl text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover border-[1.5px] border-edge focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        className="flex items-center justify-between py-3.5 px-5 bg-btn text-btn-text no-underline rounded-xl text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover hover:text-foreground border-[1.5px] border-edge focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
         View My Work
         <span className="text-lg">↗</span>

@@ -7,13 +7,20 @@ import { useState, useEffect, useRef, useCallback } from "react";
 const navLinks = [
   { href: "/projects", label: "PROJECTS" },
   { href: "/about", label: "ABOUT" },
+  { href: "/experience", label: "EXPERIENCE" },
   { href: "/contact", label: "CONTACT" },
+  { href: "/other", label: "OTHER" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(() => {
+    if (typeof window !== "undefined") {
+      return document.documentElement.getAttribute("data-theme") === "dark";
+    }
+    return false;
+  });
   const navRef = useRef<HTMLUListElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
@@ -55,7 +62,7 @@ export default function Header() {
       <nav className="max-w-[1280px] mx-auto flex justify-between items-center px-4 md:px-6 gap-2 overflow-hidden">
         <Link
           href="/"
-          className="text-xs md:text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-edge rounded-3xl px-3 md:px-5 py-2 transition-all duration-200 delay-75 hover:bg-edge hover:text-page shrink-0 truncate max-w-[55%] md:max-w-none hover:border-edge-hover"
+          className="text-xs md:text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-edge rounded-3xl px-3 md:px-5 py-2 transition-all duration-200 delay-75 hover:bg-btn-hover hover:text-foreground shrink-0 truncate max-w-[55%] md:max-w-none hover:border-edge-hover"
         >
           <span className="hidden md:inline">SAURABH CHAUHAN | FULL-STACK DEVELOPER</span>
           <span className="md:hidden">SC | DEVELOPER</span>
@@ -82,8 +89,8 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={`block text-center py-3.5 text-sm md:py-2 md:text-[13px] px-5 cursor-pointer rounded-3xl transition-all duration-200 delay-75 border-[1.5px] border-edge no-underline tracking-wide font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 hover:border-edge-hover ${pathname === link.href
-                      ? "bg-edge text-page"
-                      : "text-foreground hover:bg-edge hover:text-page"
+                    ? "bg-edge text-page"
+                    : "text-foreground hover:bg-btn-hover hover:text-foreground"
                     }`}
                 >
                   {link.label}
@@ -92,7 +99,7 @@ export default function Header() {
             ))}
           </ul>
           <button
-            className="w-10 h-10 rounded-full border-[1.5px] border-edge bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 delay-75 shrink-0 hover:bg-edge hover:text-page hover:border-edge-hover focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+            className="w-10 h-10 rounded-full border-[1.5px] border-edge bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 delay-75 shrink-0 hover:bg-btn-hover hover:text-foreground hover:border-edge-hover focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
             onClick={toggleTheme}
             aria-label="Toggle dark mode"
           >

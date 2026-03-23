@@ -13,7 +13,7 @@ export default function ExpertiseCard({ skills }: ExpertiseCardProps) {
       <div className="flex flex-wrap gap-2.5">
         {skills.map((skill) => (
           <span
-            className="py-2 px-[18px] border-[1.5px] border-edge rounded-3xl text-[13px] font-medium text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover"
+            className="py-2 px-[18px] border-[1.5px] border-edge rounded-3xl text-[13px] font-medium text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover hover:text-foreground"
             key={skill}
           >
             {skill}

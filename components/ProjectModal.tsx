@@ -60,9 +60,18 @@ export default function ProjectModal({ projects, infoOpen, onClose }: ProjectMod
             {project.status}
           </span>
         </div>
-        <p className="text-secondary text-[15px] leading-[1.8]">
-          {project.description}
-        </p>
+        <div className="text-secondary text-[15px] leading-[1.8] space-y-6 text-justify">
+          {project.description.split("\n\n").map((para, i) => (
+            <p key={i}>
+              {para.trim().split(/(\bProblem:|\bSolution:)/).map((part, j) => {
+                if (part === "Problem:" || part === "Solution:") {
+                  return <strong key={j} className="text-foreground">{part}</strong>;
+                }
+                return part;
+              })}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );

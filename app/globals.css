@@ -17,7 +17,7 @@
   --brand-teal: #14b8a6;
   --btn-bg: #fff;
   --btn-text: #1a1a1a;
-  --btn-hover: #f0f0f0;
+  --btn-hover: rgba(20, 184, 166, 0.1);
   --code-bg: #fff;
   --code-text: #1a1a1a;
   --shadow: rgba(0, 0, 0, 0.08);
@@ -38,7 +38,7 @@
   --brand-teal: #0d9488;
   --btn-bg: transparent;
   --btn-text: #fff;
-  --btn-hover: rgba(13, 148, 136, 0.1);
+  --btn-hover: rgba(13, 148, 136, 0.2);
   --code-bg: #0d0d0d;
   --code-text: #c5c8c6;
   --shadow: rgba(0, 0, 0, 0.3);

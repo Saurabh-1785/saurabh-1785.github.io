@@ -42,7 +42,7 @@ export default function SocialCard() {
         <a
           href="/Resume.pdf"
           target="_blank"
-          className="flex items-center gap-2 py-2 px-5 border-[1.5px] border-edge rounded-3xl bg-card text-foreground no-underline text-sm font-medium transition-all duration-200 delay-75 hover:bg-btn-hover"
+          className="flex items-center gap-2 py-2 px-5 border-[1.5px] border-edge rounded-3xl bg-card text-foreground no-underline text-sm font-medium transition-all duration-200 delay-75 hover:bg-btn-hover hover:text-foreground"
         >
           Download <span className="text-base">↓</span>
         </a>

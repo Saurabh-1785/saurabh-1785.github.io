@@ -5,7 +5,7 @@ export default function StatsBar() {
     <div className="col-span-1 md:col-span-2 bg-code border-[1.5px] border-edge rounded-[20px] overflow-hidden transition-colors duration-200 delay-75 hover:border-edge-hover h-full relative">
       {/* Decorative circle overlay */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[30%] aspect-square rounded-full border-[1.5px] border-edge" />
+        <div className="w-[30%] aspect-square rounded-full border-[1.5px] border-edge bg-edge/10 dark:bg-edge/20" />
       </div>
 
       <div className="flex flex-wrap h-full relative z-10">
