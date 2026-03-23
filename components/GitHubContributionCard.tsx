@@ -36,7 +36,7 @@ export default function GitHubContributionCard() {
   }, []);
 
   return (
-    <section className="col-span-1 md:col-span-2 lg:col-span-4 bg-code border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover p-4 md:p-6 overflow-hidden">
+    <section className="col-span-1 md:col-span-2 lg:col-span-4 bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover p-4 md:p-6 overflow-hidden">
       <h3 className="text-sm font-semibold text-label uppercase tracking-wide">
         GitHub Contributions
       </h3>
@@ -53,8 +53,8 @@ export default function GitHubContributionCard() {
           showColorLegend
           showMonthLabels
           theme={{
-            light: ["var(--color-card-alt)", "var(--color-accent)"],
-            dark: ["var(--color-card-alt)", "var(--color-accent)"],
+            light: ["#ebedf0", "#14b8a6"],
+            dark: ["#161b22", "#07332f", "#0E5D57", "#128C84", "#14B8A6"],
           }}
         />
       </div>
