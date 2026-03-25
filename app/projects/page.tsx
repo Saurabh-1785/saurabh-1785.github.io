@@ -4,6 +4,31 @@ import { useState } from "react";
 
 const projects = [
   {
+    title: "APE AI",
+    description: `
+    Problem: 
+    Companies receive large volumes of customer feedback from multiple sources, but this data is unstructured and difficult to analyze. Product teams must manually review, categorize, and convert feedback into requirements, which is time-consuming, error-prone, and often leads to missed insights and delayed product improvements.
+
+    Solution: 
+    Automatically transforms raw customer feedback into structured product requirements. It analyzes feedback, identifies key issues, generates validated requirements, and converts them into engineering-ready tasks, enabling faster and more data-driven product decision-making.
+    `,
+    tech: [],
+    status: "In Progress" as const,
+    links: [
+    ],
+  },
+  {
+    title: "TEDxNIT Hamirpur Website",
+    description: `
+    The official TEDx NIT Hamirpur 2026 website, designed and developed to represent the organization’s digital presence. Built with a modern, responsive interface, it delivers a seamless user experience across devices while showcasing events, speakers, and initiatives. The platform ensures structured content delivery, smooth navigation, and a professional interface for engaging audiences and promoting TEDx activities effectively.`,
+    tech: [],
+    status: "Completed" as const,
+    links: [
+      { label: "Live Demo", href: "https://www.tedxnithamirpur.com/" },
+      { label: "View Code", href: "https://github.com/Saurabh-1785/tedx-website.git" },
+    ],
+  },
+  {
     title: "PathBound",
     description: `
     Problem:
@@ -11,7 +36,7 @@ const projects = [
 
     Solution:
     PathBound addresses this by enabling rate-protected exchange intents using blockchain-based path payments. Users can define a minimum acceptable exchange rate and a valid time window for execution, ensuring better control and predictability. Funds remain secure under user custody until execution, and transactions are processed atomically, guaranteeing that exchanges either complete fully at the desired rate or not at all.`,
-    tech: ["NEXT.JS", "REACT", "TAILWIND"],
+    tech: ["NODE.JS", "REACT", "STELLAR"],
     status: "Completed" as const,
     links: [
       { label: "Live Demo", href: "https://pathbound.vercel.app/" },
@@ -22,7 +47,7 @@ const projects = [
     title: "ResumeFlow",
     description: `
       An AI-powered CV generator that converts user input into a polished, ATS-optimized resume with professional formatting. It leverages real-time LaTeX compilation to provide instant preview and high-quality PDF output, ensuring accuracy, customization, and a seamless resume-building experience across devices.`,
-    tech: ["REACT", "NODE.JS", "CSS"],
+    tech: ["REACT", "NODE.JS", "LATEX", "GOOGLE GEMINI API"],
     status: "Completed" as const,
     links: [
       { label: "Live Demo", href: "https://resume-flow-project.vercel.app/" },
@@ -37,7 +62,7 @@ const projects = [
 
     Solution:
     CodeSync solves this by providing a real-time collaborative coding environment where multiple developers can edit code simultaneously with instant synchronization. Features like live cursors, user presence, and conflict-free editing using CRDTs ensure smooth collaboration. With built-in syntax highlighting and independent undo/redo history, it creates a seamless and efficient coding experience for teams working together from anywhere.`,
-    tech: ["REACT", "SOCKET.IO", "NODE.JS"],
+    tech: ["NEXT.JS", "CODE MIRROR", "YJS", "WEBSOCKETS"],
     status: "Completed" as const,
     links: [
       { label: "Live Demo", href: "https://code-sync-iv3p.vercel.app/" },
@@ -46,13 +71,70 @@ const projects = [
   },
   {
     title: "VeriJS",
-    description:
-      "A JavaScript verification and testing utility that helps developers validate code logic and catch errors early.",
-    tech: ["JAVASCRIPT", "NODE.JS"],
-    status: "In Progress" as const,
+    description: `
+    Problem:
+    Identifying bugs and code issues in JavaScript often relies on executing the code or manual reviews, which can be time-consuming and error-prone. Many developers miss structural or logical issues early in development, leading to inefficient debugging and reduced code quality. Additionally, existing tools can be complex or lack immediate, visual feedback during coding.
+
+    Solution:
+    VeriJS addresses this by providing a lightweight static analysis tool that detects issues without running the code. By parsing code into an Abstract Syntax Tree (AST) and applying rule-based analysis, it identifies potential bugs and bad practices in real time. With an interactive editor and instant visual feedback, developers can quickly understand and fix issues, improving code quality and development efficiency`,
+    tech: ["BABEL","MONACO EDITOR","JAVASCRIPT"],
+    status: "Completed" as const,
     links: [
       { label: "Live Demo", href: "https://veri-js-lake.vercel.app/" },
       { label: "View Code", href: "https://github.com/Saurabh-1785/VeriJS.git" },
+    ],
+  },
+  {
+    title: "Zenith",
+    description: `
+    Problem:
+    Manually assigning tasks to engineers is time-consuming and often inefficient, especially in teams with varying skill sets and workloads. It can lead to poor resource utilization, missed deadlines, and mismatches between task requirements and engineer capabilities.
+
+    Solution:
+    Zenith automates task allocation by intelligently matching tasks with the most suitable resources based on skills, availability, priority, and deadlines. By dynamically evaluating capacity and requirements, it ensures optimal workload distribution, improves efficiency, and helps teams deliver work faster and more effectively.`,
+    tech: ["NEXT.JS", "EXPRESS.JS", "MYSQL"],
+    status: "Completed" as const,
+    links: [
+      { label: "View Code", href: "https://github.com/Saurabh-1785/zenith.git" },
+    ],
+  },
+  {
+    title: "GeoFinder",
+    description: `
+    Problem:
+    Finding nearby resources like hospitals, restaurants, or services in real-time can be inefficient due to fragmented data sources and lack of intuitive visualization. Traditional systems often fail to provide accurate location-based results, dynamic filtering, and seamless interaction on maps, leading to a poor user experience.
+
+    Solution:
+    GeoFinder addresses this by offering a WebGIS-based platform that integrates geolocation, geocoding, and real-time spatial queries. It enables users to search and visualize nearby resources on an interactive map with accurate distance calculations, live suggestions, and dynamic clustering. This ensures fast, intuitive, and location-aware discovery of relevant places.`,
+    tech: ["LEAFLET","AXIOS","OPENSTREET MAP API"],
+    status: "Completed" as const,
+    links: [
+      { label: "Live Demo", href: "https://geofinder-5j69.onrender.com/" },
+      { label: "View Code", href: "https://github.com/Saurabh-1785/GeoFinder.git" },
+    ],
+  },
+  {
+    title: "ECI-Secure Vote",
+    description: `
+    Problem:
+    Traditional voting systems limit accessibility for citizens living abroad or serving in remote locations, while also raising concerns around security, transparency, and voter coercion. Existing digital solutions often struggle to balance privacy, verifiability, and resistance to tampering, making large-scale secure online voting difficult to implement.
+
+    Solution:
+    ECI Secure Vote addresses this by providing a secure, remote voting platform powered by advanced cryptography, AI-based security, and blockchain verification. It ensures voter authentication through biometrics, maintains anonymity using zero-knowledge principles, and guarantees tamper-proof, verifiable results. With real-time monitoring and anti-coercion mechanisms, the system enables safe, transparent, and accessible voting from anywhere in the world.`,
+    tech: ["REACT", "MONGODB", "NODE.js"],
+    status: "Completed" as const,
+    links: [
+      { label: "View Code", href: "https://github.com/Saurabh-1785/Online-Voting-System.git" },
+    ],
+  },
+  {
+    title: "RBAC",
+    description: `
+    A Role-Based Access Control (RBAC) system designed to manage and enforce secure authentication and authorization across applications. It implements OAuth-based login and token-driven access control, enabling users to securely authenticate and access resources based on assigned roles and permissions. The system ensures fine-grained control over protected routes, supports scalable user-role management, and follows best practices for session handling and API security, making it suitable for real-world, production-level applications.`,
+    tech: ["JWT", "BCRYPT", "EXPRESS.JS"],
+    status: "Completed" as const,
+    links: [
+      { label: "View Code", href: "https://github.com/Saurabh-1785/RBAC.git" },
     ],
   },
   {
@@ -66,83 +148,43 @@ const projects = [
       { label: "View Code", href: "https://github.com/Saurabh-1785/interactive-tip-calculator" },
     ],
   },
-  {
-    title: "Alternate Site Designs",
-    description:
-      "Figma based alternate design for various websites like Amazon, YouTube, and more — exploring modern UI patterns.",
-    tech: ["FIGMA"],
-    status: "In Progress" as const,
-    links: [
-      { label: "View", href: "https://www.figma.com/design/85sA25E2qpJEFeIbyxxelf/Alternate-design-sites?node-id=0-1&t=mPPWaAYJ0SUyhF9y-1" },
-    ],
-  },
-  {
-    title: "DevBoard",
-    description:
-      "A developer dashboard that aggregates GitHub stats, task management, and project tracking in one unified interface.",
-    tech: ["REACT", "TYPESCRIPT", "TAILWIND"],
-    status: "In Progress" as const,
-    links: [
-      { label: "View Code", href: "#" },
-    ],
-  },
-  {
-    title: "SnapNote",
-    description:
-      "A lightweight note-taking app with markdown support, tag-based organization, and cloud sync for seamless productivity.",
-    tech: ["NEXT.JS", "MONGODB", "CSS"],
-    status: "Completed" as const,
-    links: [
-      { label: "Live Demo", href: "#" },
-      { label: "View Code", href: "#" },
-    ],
-  },
-  {
-    title: "QuizForge",
-    description:
-      "An interactive quiz platform where users can create, share, and attempt quizzes with real-time scoring and leaderboards.",
-    tech: ["REACT", "FIREBASE", "TAILWIND"],
-    status: "Completed" as const,
-    links: [
-      { label: "Live Demo", href: "#" },
-      { label: "View Code", href: "#" },
-    ],
-  },
-  {
-    title: "BudgetBuddy",
-    description:
-      "A personal finance tracker that helps users manage expenses, set budgets, and visualize spending patterns with charts.",
-    tech: ["REACT", "CHART.JS", "NODE.JS"],
-    status: "Completed" as const,
-    links: [
-      { label: "Live Demo", href: "#" },
-      { label: "View Code", href: "#" },
-    ],
-  },
-  {
-    title: "LinkTree Clone",
-    description:
-      "A customizable link-in-bio page builder with theme options, analytics tracking, and drag-and-drop link ordering.",
-    tech: ["HTML", "CSS", "JAVASCRIPT"],
-    status: "Completed" as const,
-    links: [
-      { label: "Live Demo", href: "#" },
-      { label: "View Code", href: "#" },
-    ],
-  },
-  {
-    title: "CloudDeploy CLI",
-    description:
-      "A command-line tool that simplifies deploying web apps to cloud providers with one-command setup and configuration.",
-    tech: ["NODE.JS", "PYTHON", "DOCKER"],
-    status: "In Progress" as const,
-    links: [
-      { label: "View Code", href: "#" },
-    ],
-  },
 ];
 
 // All projects data is defined at the top of the file
+
+// Components
+const FormattedDescription = ({ text }: { text: string }) => {
+  return (
+    <div className="space-y-4 text-justify">
+      {text.trim().split(/\n\s*\n/).map((para, i) => {
+        return (
+          <div key={i} className="text-secondary text-[14px] leading-[1.7]">
+            {para.trim().split('\n').map((line, j) => {
+              const highlightMatch = line.trim().match(/^(Problem:|Solution:)/i);
+              if (highlightMatch) {
+                const header = highlightMatch[0];
+                const content = line.trim().slice(header.length);
+                return (
+                  <div key={j} className="mb-1">
+                    <span className="font-black text-foreground uppercase tracking-wider text-[11px] block mb-1.5 opacity-90">
+                      {header}
+                    </span>
+                    <span className="block">{content.trim()}</span>
+                  </div>
+                );
+              }
+              return (
+                <span key={j} className="block">
+                  {line.trim()}
+                </span>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 export default function ProjectsPage() {
   const [infoOpen, setInfoOpen] = useState<string | null>(null);
@@ -153,9 +195,6 @@ export default function ProjectsPage() {
         <h2 className="text-4xl font-extrabold mb-3 text-foreground">
           My Projects
         </h2>
-        <p className="text-muted text-base">
-          Here are some of the projects I&apos;ve built recently
-        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -180,6 +219,18 @@ export default function ProjectsPage() {
                 <h4 className="text-lg font-bold mb-3 text-foreground">
                   {project.title}
                 </h4>
+
+                {/* Tech Stack on Card */}
+                <div className="flex flex-wrap gap-1.5 mb-5 mt-auto">
+                  {project.tech.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-card-alt text-[9px] font-bold text-muted px-2 py-0.5 rounded border border-edge/20 uppercase tracking-tighter"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
                 <div className="flex gap-4 items-center">
                   {/* Info Button */}
@@ -320,9 +371,9 @@ export default function ProjectsPage() {
                       </span>
                     ))}
                   </div>
-                  <p className="text-secondary text-[15px] leading-[1.8]">
-                    {project.description}
-                  </p>
+                  <div className="mt-6 border-t border-edge/10 pt-6">
+                    <FormattedDescription text={project.description} />
+                  </div>
                 </>
               );
             })()}

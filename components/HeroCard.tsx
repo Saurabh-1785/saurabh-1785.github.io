@@ -2,9 +2,9 @@ import React from "react";
 
 export default function HeroCard() {
   return (
-    <div className="bg-card border-[1.5px] border-edge rounded-[20px] overflow-hidden transition-colors duration-200 delay-75 hover:border-edge-hover relative p-4 flex flex-col items-center md:min-h-[420px] lg:row-span-2">
+    <div data-spotlight-card className="bg-card border-[1.5px] border-edge rounded-[20px] overflow-hidden transition-colors duration-200 delay-75 hover:border-edge-hover relative p-4 flex flex-col items-center md:min-h-[420px] lg:row-span-2">
       {/* Photo — hidden on mobile */}
-      <div className="hidden md:flex w-full flex-1 rounded-2xl overflow-hidden">
+      <div className="hidden md:flex w-full flex-1 rounded-2xl overflow-hidden relative group/photo">
         <img
           src="/Saurabh(white).webp"
           alt="Saurabh Chauhan"
@@ -15,6 +15,8 @@ export default function HeroCard() {
           alt="Saurabh Chauhan"
           className="w-full h-full object-cover hidden dark:block"
         />
+        {/* Bottom Fade Overlay */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-card to-transparent pointer-events-none z-10" />
       </div>
       {/* Desktop name */}
       <h1 className="hidden md:block text-[28px] md:text-[32px] font-extrabold leading-[1.15] text-foreground text-center pt-4 pb-2">

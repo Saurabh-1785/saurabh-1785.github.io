@@ -20,6 +20,7 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
         {projects.map((project) => (
           <div
             key={project.title}
+            data-spotlight-card
             className="bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden relative"
           >
             <div className="h-[120px] md:h-[140px] bg-white dark:bg-black" />

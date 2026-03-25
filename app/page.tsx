@@ -9,6 +9,7 @@ import ProjectGrid from "@/components/ProjectGrid";
 import StatsBar from "@/components/StatsBar";
 import ProjectModal from "@/components/ProjectModal";
 import GitHubContributionCard from "@/components/GitHubContributionCard";
+import SpotlightGrid from "@/components/SpotlightGrid";
 
 const skills = [
   "Python",
@@ -72,7 +73,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-hidden">
+      <SpotlightGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-hidden">
         <HeroCard />
         <AboutCard />
         <SocialCard />
@@ -80,7 +81,7 @@ export default function HomePage() {
         <ProjectGrid projects={projects} onOpenInfo={setInfoOpen} />
         <StatsBar />
         <GitHubContributionCard />
-      </div>
+      </SpotlightGrid>
 
       <ProjectModal
         projects={projects}
