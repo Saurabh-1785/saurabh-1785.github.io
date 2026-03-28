@@ -36,14 +36,14 @@ export default function StatsBar() {
 
   return (
     <div
-      className="col-span-1 md:col-span-2 bg-code border-[1.5px] border-edge rounded-[20px] overflow-hidden transition-colors duration-200 delay-75 hover:border-edge-hover h-full relative"
+      className="col-span-1 md:col-span-3 lg:col-span-2 bg-code border-[1.5px] border-edge rounded-[20px] overflow-hidden transition-colors duration-200 delay-75 hover:border-edge-hover h-full relative"
       data-spotlight-card
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {/* Lottie Animation overlay - always visible, plays only on hover */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[70%] md:w-[50%] aspect-square dark:brightness-75 dark:saturate-150 transition-[filter] duration-300">
+        <div className="w-[70%] md:w-[42%] aspect-square dark:brightness-75 dark:saturate-150 transition-[filter] duration-300">
           <DotLottieReact
             src="https://lottie.host/da007cef-0fe3-44c1-b89a-176f561b099d/w78GrXdpDz.lottie"
             loop

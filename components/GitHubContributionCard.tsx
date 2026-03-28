@@ -36,7 +36,7 @@ export default function GitHubContributionCard() {
   }, []);
 
   return (
-    <section data-spotlight-card className="col-span-1 md:col-span-2 lg:col-span-4 bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover p-4 md:p-6 overflow-hidden">
+    <section data-spotlight-card className="col-span-1 md:col-span-3 lg:col-span-4 bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover p-4 md:p-6 overflow-hidden">
       <h3 className="text-sm font-semibold text-label uppercase tracking-wide">
         GitHub Contributions
       </h3>

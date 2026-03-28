@@ -15,7 +15,7 @@ interface ProjectGridProps {
 
 export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) {
   return (
-    <div className="md:col-span-2 flex flex-col gap-4 overflow-hidden">
+    <div className="md:col-span-3 lg:col-span-2 flex flex-col gap-4 overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((project) => (
           <div

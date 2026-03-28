@@ -20,7 +20,7 @@ const Footer = () => {
 
       {/* Main Footer Content - Using Flex for precise right-alignment */}
       <div className="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row md:justify-between items-start gap-12 md:gap-4 relative">
-        
+
         {/* Left Side - Branding & Map */}
         <div className="flex flex-col gap-6 w-full md:w-[320px] shrink-0">
           <div className="flex flex-col gap-4">
@@ -52,34 +52,34 @@ const Footer = () => {
           <div className="relative w-full h-32 rounded-xl overflow-hidden border border-edge/20 group">
             <div className="absolute inset-0 bg-[#f9f9f9] dark:bg-[#1a1a1b] transition-colors duration-300">
               {/* Grid Lines */}
-              <div className="absolute inset-0 opacity-10 dark:opacity-20" 
-                   style={{backgroundImage: 'radial-gradient(circle, #888 1px, transparent 1px)', backgroundSize: '20px 20px'}} />
-              
+              <div className="absolute inset-0 opacity-10 dark:opacity-20"
+                style={{ backgroundImage: 'radial-gradient(circle, #888 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+
               {/* Map Layout */}
               <svg className="absolute inset-0 w-full h-full opacity-30 dark:opacity-40" viewBox="0 0 400 200">
-                <path d="M0,50 L400,50 M0,100 L400,100 M0,150 L400,150 M100,0 L100,200 M200,0 L200,200 M300,0 L300,200" 
-                      className="stroke-[#ccc] dark:stroke-[#444]" strokeWidth="1" fill="none" />
+                <path d="M0,50 L400,50 M0,100 L400,100 M0,150 L400,150 M100,0 L100,200 M200,0 L200,200 M300,0 L300,200"
+                  className="stroke-[#ccc] dark:stroke-[#444]" strokeWidth="1" fill="none" />
               </svg>
 
               {/* Blue Location Indicator */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1">
                 <div className="relative">
-                   <div className="absolute -inset-2 bg-accent/30 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300" />
-                   <div className="w-3 h-3 bg-accent rounded-full border-2 border-[#f9f9f9] dark:border-[#1a1a1b] relative z-10 transition-colors" />
+                  <div className="absolute -inset-2 bg-accent/30 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300" />
+                  <div className="w-3 h-3 bg-accent rounded-full border-2 border-[#f9f9f9] dark:border-[#1a1a1b] relative z-10 transition-colors" />
                 </div>
                 <span className="text-[10px] font-bold text-foreground bg-page/80 dark:bg-[#111]/80 px-1.5 py-0.5 rounded shadow-sm">Hamirpur</span>
               </div>
 
               {/* Time Badge */}
               <div className="absolute top-3 right-3 bg-card/90 dark:bg-[#111]/90 border border-edge/30 px-2 py-1 rounded text-[9px] font-mono text-foreground/80 flex items-center gap-2">
-                 <span>{new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })} IST</span>
-                 <div className="w-1 h-1 bg-accent rounded-full" />
+                <span>{new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })} IST</span>
+                <div className="w-1 h-1 bg-accent rounded-full" />
               </div>
             </div>
-            
-            <a 
-              href="https://www.google.com/maps/place/Hamirpur,+Himachal+Pradesh" 
-              target="_blank" 
+
+            <a
+              href="https://www.google.com/maps/place/Hamirpur,+Himachal+Pradesh"
+              target="_blank"
               rel="noopener noreferrer"
               className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300"
             >
@@ -100,7 +100,7 @@ const Footer = () => {
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className="text-secondary hover:text-accent transition-all duration-200 text-sm flex items-center gap-3 group"
+                  className="text-secondary hover:text-accent transition-all duration-200 text-[13px] flex items-center gap-3 group"
                 >
                   <span className="w-0 group-hover:w-3 h-[1px] bg-accent transition-all duration-300" />
                   {link.name}
@@ -164,7 +164,7 @@ const Footer = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email Address"
                 required
-                className="w-full bg-transparent border-b border-edge/40 py-2.5 text-sm focus:border-accent outline-none transition-all duration-300 placeholder:text-muted/50"
+                className="w-full bg-transparent border-b border-edge/40 py-2.5 text-[13px] focus:border-accent outline-none transition-all duration-300 placeholder:text-muted/50"
               />
               <div className="flex">
                 <button
@@ -186,7 +186,7 @@ const Footer = () => {
             © 2026 SAURABH CHAUHAN
           </p>
           <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase">
-            LAST UPDATED: 2026-03-25
+            LAST UPDATED: 2026-03-28
           </p>
         </div>
       </div>
