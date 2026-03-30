@@ -29,6 +29,17 @@ const skills = [
   "Linux",
 ];
 
+const experiences = [
+  {
+    title: "Google Developers Groups Ludhiana - NITH Chapter",
+    duration: "2024 - Present",
+  },
+  {
+    title: "TEDxNIT Hamirpur",
+    duration: "2024 - Present",
+  },
+];
+
 const projects = [
   {
     title: "APE AI",
@@ -53,6 +64,14 @@ const projects = [
     status: "Completed" as const,
   },
   {
+    title: "ResumeFlow",
+    description: `
+    An AI-powered CV generator that converts user input into a polished, ATS-optimized resume with professional formatting. It leverages real-time LaTeX compilation to provide instant preview and high-quality PDF output, ensuring accuracy, customization, and a seamless resume-building experience across devices.`,
+    github: "https://github.com/Saurabh-1785/ResumeFlow.git",
+    demo: "https://resume-flow-project.vercel.app/",
+    status: "Completed" as const,
+  },
+  {
     title: "CodeSync",
     description: `
     Problem:
@@ -63,14 +82,7 @@ const projects = [
     github: "https://github.com/Saurabh-1785/CodeSync.git",
     demo: "https://code-sync-iv3p.vercel.app/",
     status: "Completed" as const,
-  },
-  {
-    title: "ResumeFlow",
-    description: `
-    An AI-powered CV generator that converts user input into a polished, ATS-optimized resume with professional formatting. It leverages real-time LaTeX compilation to provide instant preview and high-quality PDF output, ensuring accuracy, customization, and a seamless resume-building experience across devices.`,
-    github: "https://github.com/Saurabh-1785/ResumeFlow.git",
-    demo: "https://resume-flow-project.vercel.app/",
-    status: "Completed" as const,
+    mobileOnly: true,
   },
 ];
 
@@ -84,7 +96,7 @@ export default function HomePage() {
         <AboutCard />
         <SocialCard />
         <ExpertiseCard skills={skills} />
-        <ProjectGrid projects={projects} onOpenInfo={setInfoOpen} />
+        <ProjectGrid projects={projects} experiences={experiences} onOpenInfo={setInfoOpen} />
         <StatsBar />
         <GitHubContributionCard />
       </SpotlightGrid>

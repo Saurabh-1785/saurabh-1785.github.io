@@ -324,9 +324,18 @@ export default function ProjectsPage() {
                   )}
                 </div>
 
-                <span className="hidden md:inline-block absolute bottom-5 right-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border-[1.5px] border-edge bg-card-alt text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover hover:border-edge-hover">
-                  {project.status}
-                </span>
+                <div
+                  className="absolute top-4 right-4"
+                  title={project.status}
+                >
+                  <div
+                    className={`w-3 h-3 rounded-full ${
+                      project.status === "Completed"
+                        ? "bg-accent"
+                        : "bg-white"
+                    }`}
+                  />
+                </div>
               </div>
             </div>
           );

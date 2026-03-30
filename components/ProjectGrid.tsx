@@ -6,29 +6,77 @@ interface Project {
   github?: string;
   demo?: string;
   status: "Completed" | "In Progress";
+  mobileOnly?: boolean;
+}
+
+interface Experience {
+  title: string;
+  duration: string;
 }
 
 interface ProjectGridProps {
   projects: Project[];
+  experiences: Experience[];
   onOpenInfo: (title: string) => void;
 }
 
-export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) {
+export default function ProjectGrid({
+  projects,
+  experiences,
+  onOpenInfo,
+}: ProjectGridProps) {
   return (
     <div className="md:col-span-3 lg:col-span-2 flex flex-col gap-4 overflow-hidden">
-      <div className="grid grid-cols-1 min-[425px]:grid-cols-2 md:grid-cols-2 gap-4">
+      {/* Row 1: Experience Card (full width) */}
+      <div
+        data-spotlight-card
+        className="bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden"
+      >
+        <div className="px-5 md:px-6 pt-5 pb-2">
+          <h3 className="text-sm font-semibold text-label uppercase tracking-wide mb-4">
+            Experience
+          </h3>
+          <div className="flex flex-col gap-0">
+            {experiences.map((exp, i) => (
+              <div
+                key={exp.title}
+                className={`flex items-center justify-between py-3.5 ${
+                  i < experiences.length - 1
+                    ? "border-b border-edge/30"
+                    : ""
+                }`}
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-2 h-2 rounded-full bg-accent shrink-0" />
+                  <h4 className="text-sm font-semibold text-foreground truncate">
+                    {exp.title}
+                  </h4>
+                </div>
+                <span className="text-[10px] font-bold text-muted uppercase tracking-wider shrink-0 ml-3">
+                  {exp.duration}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Row 2: Project Cards — 3 on desktop, 4 (2x2) on tablet/mobile */}
+      <div className="grid grid-cols-1 min-[425px]:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((project) => (
           <div
             key={project.title}
             data-spotlight-card
-            className="bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden relative"
+            className={`bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden relative${
+              project.mobileOnly ? " lg:hidden" : ""
+            }`}
           >
-            <div className="h-[100px] min-[425px]:h-[120px] md:h-[140px] bg-white dark:bg-black" />
-            <div className="px-5 md:px-6 pt-4 md:pt-5 pb-5 md:pb-6 bg-edge/10 dark:bg-edge/20 relative">
-              <h4 className="text-lg font-bold mb-3">
+            <div className="h-[100px] min-[425px]:h-[90px] lg:h-[80px] bg-white dark:bg-black" />
+            <div className="px-4 lg:px-4 pt-3 lg:pt-3 pb-4 lg:pb-4 bg-edge/10 dark:bg-edge/20 relative">
+              <h4 className="text-sm lg:text-[13px] font-bold mb-2">
                 {project.title}
               </h4>
-              <div className="flex gap-4 items-center">
+              <div className="flex gap-3 items-center">
                 {/* Info Button */}
                 <button
                   onClick={() => onOpenInfo(project.title)}
@@ -36,8 +84,8 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
                   aria-label={`Info about ${project.title}`}
                 >
                   <svg
-                    width="24"
-                    height="24"
+                    width="20"
+                    height="20"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -60,8 +108,8 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
                     className="text-secondary transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15]"
                   >
                     <svg
-                      width="24"
-                      height="24"
+                      width="20"
+                      height="20"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
@@ -78,8 +126,8 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
                     className="text-secondary transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15]"
                   >
                     <svg
-                      width="24"
-                      height="24"
+                      width="20"
+                      height="20"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -94,15 +142,25 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
                   </a>
                 )}
               </div>
-              <span
-                className={`hidden md:inline-block absolute bottom-5 right-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border-[1.5px] border-edge bg-card-alt text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover hover:border-edge-hover`}
+              {/* Status Dot */}
+              <div
+                className="absolute top-3 right-3"
+                title={project.status}
               >
-                {project.status}
-              </span>
+                <div
+                  className={`w-2.5 h-2.5 rounded-full ${
+                    project.status === "Completed"
+                      ? "bg-accent"
+                      : "bg-white"
+                  }`}
+                />
+              </div>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Row 3: View All Projects */}
       <Link
         href="/projects"
         className="flex items-center justify-between py-3.5 px-5 bg-btn text-btn-text no-underline rounded-xl text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover hover:text-foreground border-[1.5px] border-edge focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
