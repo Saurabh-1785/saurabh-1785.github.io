@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Saurabh Chauhan",
@@ -20,11 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="bg-page text-foreground font-sans leading-relaxed">
+      <body className={`${inter.variable} bg-page text-foreground font-sans leading-relaxed`}>
         <Header />
         <main className="mt-8 md:mt-20 min-h-[calc(100vh-80px)] pb-10">
           <div className="max-w-[1280px] mx-auto px-4 md:px-6">{children}</div>

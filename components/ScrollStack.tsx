@@ -27,46 +27,39 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
   </div>
 );
 
-/* ─────────── ScrollStack ─────────── */
 interface ScrollStackProps {
   children: ReactNode;
   className?: string;
-  /** vertical gap between unpinned cards (px) */
   cardGap?: number;
-  /** scale decrement per card (earlier cards get smaller) */
   scaleStep?: number;
-  /** vertical offset between stacked cards (px) */
   stackGap?: number;
-  /** viewport % where cards pin (from top) */
   pinOffset?: number;
 }
 
 const clamp = (v: number, lo: number, hi: number) =>
   Math.min(hi, Math.max(lo, v));
 
-const ScrollStack: React.FC<ScrollStackProps> = ({
+export default function ScrollStack({
   children,
   className = "",
   cardGap = 32,
   scaleStep = 0.035,
   stackGap = 12,
   pinOffset = 0.15,
-}) => {
+}: ScrollStackProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number>(0);
+  const cardsRef = useRef<HTMLElement[]>([]);
   const prevRef = useRef<string[]>([]);
 
-  /* ── core update ── */
   const update = useCallback(() => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
-
-    const cards = wrapper.querySelectorAll<HTMLElement>(".scroll-stack-card");
+    const cards = cardsRef.current;
     if (!cards.length) return;
 
     const scrollY = window.scrollY;
     const vh = window.innerHeight;
     const pinTop = vh * pinOffset;
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
 
     const sentinel = wrapper.querySelector<HTMLElement>(".scroll-stack-end");
     const wrapperTop = wrapper.getBoundingClientRect().top + scrollY;
@@ -75,8 +68,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       : wrapperTop + wrapper.offsetHeight;
 
     cards.forEach((card, i) => {
-      // Calculate original top position (relative to page)
-      // Note: We use a data attribute or initial calculation to avoid being affected by current translateY
       const cachedTop = parseFloat(card.dataset.naturalTop || "0");
       const pinStart = cachedTop - pinTop - stackGap * i;
       const pinEnd = sentinelTop - vh * 0.55;
@@ -90,22 +81,14 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         translateY = pinEnd - cachedTop + pinTop + stackGap * i;
       }
 
-      // Progress of how much "scrolled past" this card is
       const progress = clamp((scrollY - pinStart) / (vh * 0.5), 0, 1);
-      
-      // Scaling: cards shrink slightly as they get covered
       const targetScale = 1 - (cards.length - 1 - i) * scaleStep;
-      // We only scale down if we are below other cards in the stack
-      // Simplified: use index to determine base scale, and progress to animate into it
       const scale = 1 - progress * (1 - targetScale);
 
-      // Depth effects: blur and opacity
-      // Only apply to cards that are "behind" the current top card
       let blur = 0;
       let opacity = 1;
-      
-      // Find what the "current active" card is
       let topIndex = -1;
+
       for (let j = 0; j < cards.length; j++) {
         const jTop = parseFloat(cards[j].dataset.naturalTop || "0");
         if (scrollY >= jTop - pinTop - stackGap * j) {
@@ -136,16 +119,16 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     });
   }, [pinOffset, scaleStep, stackGap]);
 
-  /* ── scroll listener ── */
   useEffect(() => {
     const initPositions = () => {
       const wrapper = wrapperRef.current;
       if (!wrapper) return;
-      const cards = wrapper.querySelectorAll<HTMLElement>(".scroll-stack-card");
+      const cards = Array.from(wrapper.querySelectorAll<HTMLElement>(".scroll-stack-card"));
+      cardsRef.current = cards;
+      
       const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
       
       cards.forEach((card, i) => {
-        // Temporarily reset transform to get natural offsetTop
         const originalTransform = card.style.transform;
         card.style.transform = "none";
         const naturalTop = card.offsetTop + wrapperTop;
@@ -173,7 +156,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", initPositions, { passive: true });
     
-    // Initial delay to let layout settle
     const timer = setTimeout(initPositions, 100);
 
     return () => {
@@ -189,6 +171,4 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       <div className="scroll-stack-end w-full h-px" />
     </div>
   );
-};
-
-export default ScrollStack;
+}

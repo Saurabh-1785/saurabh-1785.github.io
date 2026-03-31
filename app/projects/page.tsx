@@ -204,7 +204,6 @@ export default function ProjectsPage() {
                 className="group bg-card border-[1.5px] border-edge rounded-[24px] transition-all duration-300 hover:border-edge-hover overflow-hidden relative flex flex-col md:flex-row shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.2)] h-auto md:h-[160px] cursor-pointer"
                 onClick={() => setInfoOpen(project.title)}
               >
-                {/* Image Section */}
                 <div className="w-full md:w-[220px] h-[140px] md:h-full relative overflow-hidden bg-card-alt shrink-0">
                   <img
                     src={project.imageUrl}
@@ -214,7 +213,6 @@ export default function ProjectsPage() {
                   <div className="absolute inset-0 bg-edge/5 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
 
-                {/* Content Section */}
                 <div className="p-5 md:px-8 md:py-0 flex-1 flex flex-col justify-center relative">
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="text-xl font-black text-foreground truncate max-w-[70%]">
@@ -226,7 +224,6 @@ export default function ProjectsPage() {
                     </div>
                   </div>
 
-                  {/* Tech Stack */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tech.map((tag) => (
                       <span
@@ -241,7 +238,6 @@ export default function ProjectsPage() {
                     </div>
                   </div>
 
-                  {/* Actions */}
                   <div className="flex gap-5 items-center">
                     <div className="text-secondary hover:text-accent transition-all duration-200 flex items-center gap-1.5">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -300,7 +296,6 @@ export default function ProjectsPage() {
         </a>
       </div>
 
-      {/* Info Modal */}
       {infoOpen && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4"

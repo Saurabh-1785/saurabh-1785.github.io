@@ -6,16 +6,11 @@ import { GitHubCalendar } from "react-github-calendar";
 type ThemeMode = "light" | "dark";
 
 export default function GitHubContributionCard() {
-  const [theme, setTheme] = useState<ThemeMode>(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.getAttribute("data-theme") === "dark"
-        ? "dark"
-        : "light";
-    }
-    return "light";
-  });
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<ThemeMode>("dark");
 
   useEffect(() => {
+    setMounted(true);
     const syncTheme = () => {
       setTheme(
         document.documentElement.getAttribute("data-theme") === "dark"

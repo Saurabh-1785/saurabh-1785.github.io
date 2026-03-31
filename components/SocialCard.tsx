@@ -57,7 +57,7 @@ export default function SocialCard() {
           target="_blank"
           className="flex items-center gap-2 py-2 px-1 text-secondary no-underline text-[12px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:text-accent group/cv"
         >
-          Download <span className="text-base transition-transform duration-300 group-hover/cv:translate-y-1">↓</span>
+          Download
         </a>
       </div>
     </div>

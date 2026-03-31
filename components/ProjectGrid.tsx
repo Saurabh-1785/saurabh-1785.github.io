@@ -40,11 +40,10 @@ export default function ProjectGrid({
             {workHistory.map((work, i) => (
               <div
                 key={work.title}
-                className={`flex items-center justify-between py-3.5 ${
-                  i < workHistory.length - 1
+                className={`flex items-center justify-between py-3.5 ${i < workHistory.length - 1
                     ? "border-b border-edge/30"
                     : ""
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-2 h-2 rounded-full bg-accent shrink-0" />
@@ -61,15 +60,14 @@ export default function ProjectGrid({
         </div>
       </div>
 
-      {/* Row 2: Project Cards — 3 on desktop, 4 (2x2) on tablet/mobile */}
+      {/* Row 2: Project Cards*/}
       <div className="grid grid-cols-1 min-[425px]:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((project) => (
           <div
             key={project.title}
             data-spotlight-card
-            className={`bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden relative${
-              project.mobileOnly ? " lg:hidden" : ""
-            }`}
+            className={`bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden relative${project.mobileOnly ? " lg:hidden" : ""
+              }`}
           >
             <div className="h-[100px] min-[425px]:h-[90px] lg:h-[80px] bg-white dark:bg-black" />
             <div className="px-4 lg:px-4 pt-3 lg:pt-3 pb-4 lg:pb-4 bg-edge/10 dark:bg-edge/20 relative">
@@ -148,11 +146,10 @@ export default function ProjectGrid({
                 title={project.status}
               >
                 <div
-                  className={`w-2.5 h-2.5 rounded-full ${
-                    project.status === "Completed"
+                  className={`w-2.5 h-2.5 rounded-full ${project.status === "Completed"
                       ? "bg-accent"
                       : "bg-white"
-                  }`}
+                    }`}
                 />
               </div>
             </div>
@@ -163,10 +160,10 @@ export default function ProjectGrid({
       {/* Row 3: View All Projects */}
       <Link
         href="/projects"
-        className="flex items-center justify-between py-3 px-1 text-secondary no-underline text-[12px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:text-accent group"
+        className="flex items-center justify-between py-3.5 px-5 bg-btn text-btn-text no-underline rounded-xl text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover hover:text-foreground border-[1.5px] border-edge focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
-        <span>View All Projects</span>
-        <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">↗</span>
+        View All Projects
+        <span className="text-lg">↗</span>
       </Link>
     </div>
   );

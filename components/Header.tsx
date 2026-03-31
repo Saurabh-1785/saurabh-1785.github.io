@@ -12,17 +12,14 @@ const navLinks = [
 
 export default function Header() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dark, setDark] = useState(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.getAttribute("data-theme") === "dark";
-    }
-    return false;
-  });
+  const [dark, setDark] = useState(true); // Default to dark as per layout
   const navRef = useRef<HTMLUListElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    setMounted(true);
     setDark(document.documentElement.getAttribute("data-theme") === "dark");
   }, []);
 
@@ -67,7 +64,7 @@ export default function Header() {
         </Link>
         <div className="flex items-center gap-3">
           <button
-            className="flex md:hidden flex-col gap-[5px] bg-transparent border-[1.5px] border-edge rounded-3xl px-3 py-2.5 cursor-pointer hover:border-edge-hover"
+            className="flex md:hidden flex-col gap-[7px] bg-transparent cursor-pointer group"
             ref={toggleRef}
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle navigation menu"
@@ -100,11 +97,14 @@ export default function Header() {
             ))}
           </ul>
           <button
-            className="w-10 h-10 rounded-full border-[1.5px] border-edge bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 delay-75 shrink-0 hover:bg-btn-hover hover:text-foreground hover:border-edge-hover focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+            className="w-10 h-10 rounded-full bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 shrink-0 hover:text-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
             onClick={toggleTheme}
             aria-label="Toggle dark mode"
+            suppressHydrationWarning
           >
-            {dark ? (
+            {!mounted ? (
+              <div className="w-[18px] h-[18px]" />
+            ) : dark ? (
               <svg
                 className="w-[18px] h-[18px]"
                 viewBox="0 0 24 24"

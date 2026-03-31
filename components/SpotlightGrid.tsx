@@ -5,7 +5,6 @@ import React, { useRef, useCallback, useEffect, useState } from "react";
 /**
  * SpotlightGrid — a lightweight wrapper that adds a mouse-following
  * spotlight + per-card border-glow effect to its children grid.
- * Pure CSS custom-properties approach — zero external dependencies.
  */
 
 interface SpotlightGridProps {
@@ -17,19 +16,19 @@ interface SpotlightGridProps {
   glowRgb?: string;
 }
 
-const SpotlightGrid: React.FC<SpotlightGridProps> = ({
+export default function SpotlightGrid({
   children,
   className = "",
   radius = 350,
-  glowRgb = "20, 184, 166", // matches your teal accent
-}) => {
+  glowRgb = "20, 184, 166",
+}: SpotlightGridProps) {
   const gridRef = useRef<HTMLDivElement>(null);
   const spotRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLElement[]>([]);
   const rafRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: 0, y: 0, inside: false });
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile to skip effect (saves perf on touch devices)
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();
@@ -41,31 +40,28 @@ const SpotlightGrid: React.FC<SpotlightGridProps> = ({
     const grid = gridRef.current;
     if (!grid || !mouseRef.current.inside) return;
 
+    if (!cardsRef.current.length) {
+      cardsRef.current = Array.from(grid.querySelectorAll<HTMLElement>("[data-spotlight-card]"));
+    }
+
     const { x, y } = mouseRef.current;
-    const cards = grid.querySelectorAll<HTMLElement>("[data-spotlight-card]");
+    const cards = cardsRef.current;
 
     cards.forEach((card) => {
       const rect = card.getBoundingClientRect();
-      // Relative position inside the card (for the glow gradient origin)
       const relX = ((x - rect.left) / rect.width) * 100;
       const relY = ((y - rect.top) / rect.height) * 100;
 
-      // Distance from mouse to card center
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
-      const dist =
-        Math.hypot(x - cx, y - cy) - Math.max(rect.width, rect.height) / 2;
-      const effectiveDist = Math.max(0, dist);
-
-      // Intensity falls off linearly from 1→0 across the radius
-      const intensity = Math.max(0, 1 - effectiveDist / radius);
+      const dist = Math.hypot(x - cx, y - cy) - Math.max(rect.width, rect.height) / 2;
+      const intensity = Math.max(0, 1 - Math.max(0, dist) / radius);
 
       card.style.setProperty("--glow-x", `${relX}%`);
       card.style.setProperty("--glow-y", `${relY}%`);
       card.style.setProperty("--glow-intensity", intensity.toFixed(3));
     });
 
-    // Position the ambient spotlight circle
     if (spotRef.current) {
       spotRef.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
       spotRef.current.style.opacity = "1";
@@ -115,7 +111,6 @@ const SpotlightGrid: React.FC<SpotlightGridProps> = ({
 
   return (
     <div ref={gridRef} className={`relative ${className}`}>
-      {/* Ambient spotlight that follows the cursor (behind grid items) */}
       {!isMobile && (
         <div
           ref={spotRef}
@@ -131,6 +126,4 @@ const SpotlightGrid: React.FC<SpotlightGridProps> = ({
       {children}
     </div>
   );
-};
-
-export default SpotlightGrid;
+}

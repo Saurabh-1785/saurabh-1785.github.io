@@ -15,13 +15,10 @@ const Footer = () => {
 
   return (
     <footer className="footer-bg pt-16 pb-8 border-t-[1.5px] border-edge mt-20 container-full relative transition-all duration-300">
-      {/* Background Decorative Element */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
-      {/* Main Footer Content - Using Flex for precise right-alignment */}
       <div className="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row md:justify-between items-center md:items-start gap-12 md:gap-4 relative">
 
-        {/* Left Side - Branding & Map */}
         <div className="flex flex-col items-center md:items-start gap-6 w-full md:w-[320px] shrink-0">
           <div className="flex flex-col items-center md:items-start gap-4">
             <h2 className="text-2xl font-black tracking-tighter text-foreground group cursor-default text-center md:text-left">
@@ -48,9 +45,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Stylized Map Section */}
           <div className="relative w-full h-32 rounded-xl overflow-hidden border border-edge/20 group cursor-pointer">
-            {/* Smooth AI Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] dark:from-[#0d0d0e] dark:to-[#161618] transition-colors duration-500">
               
               {/* Ultra-Smooth Topographic Lines */}
@@ -113,7 +108,6 @@ const Footer = () => {
           `}</style>
         </div>
 
-        {/* Middle Side - Navigation Links (Centered) */}
         <div className="flex flex-col items-center flex-1">
           <ul className="space-y-10">
             {[
@@ -135,7 +129,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Right Side - Contact & Socials (True Right-Alignment) */}
         <div className="flex flex-col items-center md:items-start md:w-[240px] shrink-0">
           <div className="flex gap-6 items-center mb-10">
             {[
@@ -204,7 +197,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="max-w-[1280px] mx-auto px-6 mt-16 border-t border-edge/10">
         <div className="flex items-center justify-between gap-8 py-8">
           <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase">

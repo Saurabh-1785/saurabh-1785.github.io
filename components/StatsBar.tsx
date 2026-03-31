@@ -30,7 +30,6 @@ export default function StatsBar() {
   };
 
   const handleMouseLeave = () => {
-    // Stop looping so the current cycle finishes, then the 'complete' event handles the rest
     dotLottie?.setLoop(false);
   };
 
